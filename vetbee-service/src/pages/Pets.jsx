@@ -59,18 +59,16 @@ export const Pets = () => {
   console.log(pets);
 
   return pets.map((pet) => (
-    <div>
-      <Pet
-        key={pet.id}
-        petId={pet.id}
-        pet={pet}
-        onDelete={() => {
-          deletePet(pet.id);
-        }}
-        onUpdate={(update) => {
-          updatePet(pet.id, update);
-        }}
-      />
-    </div>
+    <Pet
+      key={pet.id}
+      petId={pet.id}
+      pet={pet}
+      onDelete={() => {
+        deletePet(pet.id);
+      }}
+      onUpdate={(update) => {
+        updatePet(pet.id, update);
+      }}
+    />
   ));
 };
