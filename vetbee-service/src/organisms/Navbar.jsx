@@ -5,23 +5,7 @@ import { Button } from "../ui/Button";
 import logo from "../assets/vetbee.png";
 
 export const Nav = () => {
-  const buttons = (
-    <Navbar.Menu>
-      <Navbar.Item as="span">
-        <Link className="button is-primary" to="/">
-          Pets
-        </Link>
-      </Navbar.Item>
-
-      <Navbar.Item as="span">
-        <Link className="button is-primary" to="/medications">
-          
-        </Link>
-      </Navbar.Item>
-    </Navbar.Menu>
-  );
-
-  return (
+    return (
     <Navbar>
       <Navbar.Brand>
         <Navbar.Item href="#">
@@ -33,11 +17,13 @@ export const Nav = () => {
         </Navbar.Item>
         <Navbar.Burger />
       </Navbar.Brand>
+
       <Navbar.Menu>
         <Navbar.Container>
           <Navbar.Item href="/">
               Pets
           </Navbar.Item>
+          
           <Navbar.Item href="/medications">
             Medications
           </Navbar.Item>

@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter, CardFooterItem, Content } from "../ui/Ca
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const AddPet = ({ className }) => {
+ const AddPet = ({ className }) => {
   const pet = { name: "", dob: "", client_email: "" };
   const [model, setModel] = useState(pet);
   const onModelUpdate = (update) => setModel(update);
@@ -31,3 +31,5 @@ export const AddPet = ({ className }) => {
     </Card>
   );
 };
+
+export default AddPet;

@@ -1,10 +1,10 @@
 import './App.css';
 
-import { Route, Routes, Router, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Nav } from "./organisms/Navbar";
 import { Container } from "react-bulma-components";
-import { Pets } from "./pages/Pets";
-import { AddPet } from "./pages/AddPet";
+import  PetsPage  from "./pages/PetsPage";
+import AddPet  from "./pages/AddPet";
 
 import 'bulma/css/bulma.min.css';
 
@@ -16,13 +16,12 @@ function App() {
         <Route
           path="/"
           element={
-              <Pets />
+            <PetsPage />
           }
         />
         <Route path="/medications" element={
-          <div>
-            <AddPet />
-          </div>
+          <AddPet />
+
         } />
       </Routes>
     </Container>

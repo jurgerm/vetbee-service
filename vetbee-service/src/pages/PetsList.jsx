@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Pet } from "../components/Pet";
 import { PetsApi } from "../services/pets-api";
 
-export const Pets = () => {
+export const PetsList = () => {
   const [pets, setPets] = useState();
   const { state } = useLocation();
 
