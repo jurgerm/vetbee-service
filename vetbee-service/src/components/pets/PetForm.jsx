@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Field } from "../organisms/Field";
+import { Field } from "../../organisms/Field";
 
 export const PetForm = ({ pet, onUpdate, className, disabled }) => {
   const [name, setName] = useState(pet.name);

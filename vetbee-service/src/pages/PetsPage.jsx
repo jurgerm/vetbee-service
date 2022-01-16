@@ -1,24 +1,31 @@
-
-import { Heading, Button } from "react-bulma-components";
-import { PetsList } from "./PetsList";
+import { Heading, Button, Level } from "react-bulma-components";
+import { PetsList } from "../components/pets/PetsList";
+import { Link } from 'react-router-dom';
 
 
 function PetsPage() {
   return (
     <section>
 
-      <Heading >
-        Pets List
-        <Button is-pulled-right >
-          Add Pet
-        </Button>
+      <Level>
+        <Level.Side align="left">
+          <Heading >
+            Pets List
+          </Heading>
+        </Level.Side>
+        <Level.Side align="right">
+          <Link to="/#petsadd">
+            <Button color="primary">
+              Add Pet
+            </Button>
+          </Link>
 
-        <Button>
-          Add Log
-        </Button>
-      </Heading>
+        </Level.Side>
+      </Level>
 
-      <PetsList />
+      <div className="columns is-multiline">
+        <PetsList />
+      </div>
 
     </section>
   );

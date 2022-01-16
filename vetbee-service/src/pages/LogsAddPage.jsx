@@ -1,19 +1,28 @@
 import { Card, Button, Heading, Level } from "react-bulma-components";
 
-import { PetsApi } from "../services/pets-api";
-import { PetForm } from "../components/pets/PetForm";
+import { LogsApi } from "../services/logs-api";
+import { LogForm } from "../components/logs/LogForm.jsx";
 
-import { useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddPet = ({ className }) => {
-  const pet = { name: "", dob: "", client_email: ""};
-  const [model, setModel] = useState(pet);
-  const onModelUpdate = (update) => setModel(update);
+const AddLog = ({ className }) => {
+
+  let { petId } = useParams();
+  console.log({ petId });
+
+  const log = {
+    name: "",
+    description: "",
+    status: "",
+    pet_id: petId
+  };
+  const [model, setModel] = useState(log);
+  const onModelUpdate = (updatedLog) => setModel(updatedLog);
   const navigate = useNavigate();
   const onSave = async () => {
-    const res = await PetsApi.add(model);
-    if (res.errors) {      
+    const res = await LogsApi.add(model);
+    if (res.errors) {
       return console.warn("Bad payload", res.errors);
     }
     navigate("/", { state: { added: res } });
@@ -25,16 +34,16 @@ const AddPet = ({ className }) => {
       <Level>
         <Level.Side align="left">
           <Heading >
-            Add Pet
+            Add Log
           </Heading>
         </Level.Side>
       </Level>
 
       <Card>
         <Card.Content>
-          <PetForm
+          <LogForm
             className={className}
-            pet={pet}
+            log={log}
             onUpdate={onModelUpdate}
           />
         </Card.Content>
@@ -52,4 +61,4 @@ const AddPet = ({ className }) => {
   );
 };
 
-export default AddPet;
+export default AddLog;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Pet } from "../components/Pet";
-import { PetsApi } from "../services/pets-api";
+import { Pet } from "./Pet";
+import { PetsApi } from "../../services/pets-api";
 
 export const PetsList = () => {
   const [pets, setPets] = useState();
@@ -26,16 +26,6 @@ export const PetsList = () => {
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const updatePet = (id, update) => {
-    setPets((prevState) =>
-      prevState.map((pet) => {
-        if (pet.id === id) return { ...pet, ...update };
-
-        return pet;
-      })
-    );
   };
 
   // fetch pets list on component load
@@ -65,9 +55,6 @@ export const PetsList = () => {
       pet={pet}
       onDelete={() => {
         deletePet(pet.id);
-      }}
-      onUpdate={(update) => {
-        updatePet(pet.id, update);
       }}
     />
   ));

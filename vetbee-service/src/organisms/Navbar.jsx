@@ -1,18 +1,16 @@
-import { Navbar, Menu, Buttons } from "react-bulma-components";
+import { Navbar } from "react-bulma-components";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/Button";
 
 import logo from "../assets/vetbee.png";
 
 export const Nav = () => {
-    return (
+  return (
     <Navbar>
       <Navbar.Brand>
         <Navbar.Item href="#">
           <img
             alt="vetbee"
             src={logo}
-            width="112"
           />
         </Navbar.Item>
         <Navbar.Burger />
@@ -20,12 +18,15 @@ export const Nav = () => {
 
       <Navbar.Menu>
         <Navbar.Container>
-          <Navbar.Item href="/">
+          <Navbar.Item >
+            <Link to="/pets">
               Pets
+            </Link>
           </Navbar.Item>
-          
-          <Navbar.Item href="/medications">
-            Medications
+          <Navbar.Item>
+            <Link to="/medications">
+              Medications
+            </Link>
           </Navbar.Item>
         </Navbar.Container>
       </Navbar.Menu>
