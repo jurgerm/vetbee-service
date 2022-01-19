@@ -25,16 +25,14 @@ export const LogForm = ({ log, onUpdate, className, disabled }) => {
 
   useEffect(() => {
     onUpdate({
-      name: name,
       description: description,
       status: status,
       pet_id: petId
     });
-  }, [name, description, status, petId]);
+  }, [description, status, petId]);
 
   return (
     <form className={className || ""}>
-      <Field name="name" defaultValue={name} disabled={disabled} onChange={changeName} />
       <Field name="description" defaultValue={description} disabled={disabled} onChange={changeDescription} />
       <Field name="status" disabled={disabled} defaultValue={status} onChange={changeStatus} />
     </form>

@@ -1,9 +1,9 @@
 const API_URL = "http://localhost:8081/v1";
 
-export class PetsApi {
+export class MedsApi {
   static async all(token) {
     const res = await fetch(
-      `${API_URL}/pets`,
+      `${API_URL}/meds`,
       {
         method: "GET",
         headers: {
@@ -15,28 +15,28 @@ export class PetsApi {
     return res.json();
   }
 
-  static async add(pet) {
-    if (!pet) throw new Error("No argument");
+  static async add(medication) {
+    if (!medication) throw new Error("No argument");
 
     const res = await fetch(
-      `${API_URL}/pets`,
+      `${API_URL}/meds`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(pet),
+        body: JSON.stringify(medication),
       }
     );
 
     return res.json();
   }
 
-  static async delete(petId) {
-    if (!petId) throw new Error("No argument");
+  static async delete(id) {
+    if (!id) throw new Error("No argument");
 
     const res = await fetch(
-      `${API_URL}/pets/${petId}`,
+      `${API_URL}/meds/${id}`,
       {
         method: "DELETE",
       }
@@ -51,7 +51,7 @@ export class PetsApi {
     }
 
     const res = await fetch(
-      `${API_URL}/pets/${id}`,
+      `${API_URL}/meds/${id}`,
       {
         method: "PATCH",
         headers: {

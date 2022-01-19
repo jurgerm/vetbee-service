@@ -1,42 +1,43 @@
 import { Card, Button, Heading, Level } from "react-bulma-components";
 
-import { PetsApi } from "../services/pets-api";
-import { PetForm } from "../components/pets/PetForm";
+import { MedsApi } from "../services/meds-api";
+
+
+import { MedicationForm } from "../components/medications/MedicationForm.jsx";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddPet = ({ className }) => {
-  const pet = { name: "", dob: "", client_email: "" };
-  const [model, setModel] = useState(pet);
-  const onModelUpdate = (update) => setModel(update);
+const AddMedication = ({ className }) => {
+  const medication = {
+    name: "",
+    description: ""
+  };
+  const [model, setModel] = useState(medication);
+  const onModelUpdate = (updatedMedication) => setModel(updatedMedication);
   const navigate = useNavigate();
   const onSave = async () => {
-    const res = await PetsApi.add(model);
+    const res = await MedsApi.add(model);
     if (res.errors) {
       return console.warn("Bad payload", res.errors);
     }
-    //navigate("/pets", { state: { added: res } });
-    console.log(res);
-    navigate("/pets");
+    navigate("/medications");
   };
 
   return (
     <section>
-
       <Level>
         <Level.Side align="left">
           <Heading >
-            Add Pet
+            Add Medication
           </Heading>
         </Level.Side>
       </Level>
-
       <Card>
         <Card.Content>
-          <PetForm
+          <MedicationForm
             className={className}
-            pet={pet}
+            medication={medication}
             onUpdate={onModelUpdate}
           />
         </Card.Content>
@@ -54,4 +55,4 @@ const AddPet = ({ className }) => {
   );
 };
 
-export default AddPet;
+export default AddMedication;

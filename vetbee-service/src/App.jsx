@@ -11,42 +11,74 @@ import AddPet from "./pages/AddPet";
 import 'typeface-roboto';
 import './App.scss';
 
-import LogsPage from "./pages/LogsPage"; 
+import LogsPage from "./pages/LogsPage";
 import LogsAddPage from "./pages/LogsAddPage.jsx";
+
+import MedicationsPage from "./pages/MedicationsPage";
+import MedicationsAddPage from "./pages/MedicationsAddPage";
+
+import { useState } from "react";
+import { createContext } from "react";
+
+
+
 
 
 function App() {
+  const PetContext = createContext();
+  const [gyvunas, setGyvunas] = useState();
   return (
-    <Container className="mt-4">
-      <Nav />
+    <PetContext.Provider value={{ gyvunas, setGyvunas }}>
+      <Container className="mt-4">
+        <Nav />
 
-      <Routes>
-        <Route exact path="/" element={
-          <PetsPage />
-        } />
+        <Routes>
 
-        <Route path="/petsadd" element={
-          <AddPet />
-        } />
+          <Route exact path="/" element={
+            <PetsPage />
+          } />
 
-        <Route path="/logs/add/:petId"
-          element={
-            <LogsAddPage />
-          }
-        />
+          <Route exact path="/pets" element={
+            <PetsPage />
+          } />
 
-        <Route path="/logs/:petId"
-          element={
-            <LogsPage />
-          }
-        />
+          <Route path="/pets/add" element={
+            <AddPet />
+          } />
 
-      </Routes>
+          <Route path="/logs/add/:petId"
+            element={
+              <LogsAddPage />
+            }
+          />
 
-      <VetBeeFooter />
+          <Route path="/logs/:petId"
+            element={
+              <LogsPage />
+            }
+          />
 
-    </Container>
+          <Route path="/medications/add"
+            element={
+              <MedicationsAddPage />
+            }
+          />
 
+          <Route path="/medications"
+            element={
+              <MedicationsPage />
+            }
+          />
+
+
+
+        </Routes>
+
+        <VetBeeFooter />
+
+      </Container>
+
+    </PetContext.Provider>
   );
 }
 

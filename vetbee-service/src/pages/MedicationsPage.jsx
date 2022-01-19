@@ -1,22 +1,22 @@
 import { Heading, Button, Level } from "react-bulma-components";
-import { PetsList } from "../components/pets/PetsList";
+import { MedicationsList } from "../components/medications/MedicationsList";
 import { Link } from 'react-router-dom';
 
 
-function PetsPage() {
+function MedicationsPage() {
   return (
     <section>
 
       <Level>
         <Level.Side align="left">
           <Heading >
-            Pets List
+            Medications List
           </Heading>
         </Level.Side>
         <Level.Side align="right">
-          <Link to="/pets/add">
+          <Link to="/medications/add">
             <Button color="primary">
-              Add Pet
+              Add Medication
             </Button>
           </Link>
 
@@ -24,11 +24,11 @@ function PetsPage() {
       </Level>
 
       <div className="columns is-multiline">
-        <PetsList />
+        <MedicationsList />
       </div>
 
     </section>
   );
 };
 
-export default PetsPage;
+export default MedicationsPage;

@@ -9,20 +9,22 @@ export const PetsList = () => {
 
   const fetchPets = async () => {
     // fetch pets from api
-    const p = await PetsApi.all();
+    const allPets = await PetsApi.all();
 
     // save fetched pets to local state
-    setPets(p);
+    setPets(allPets);
   };
 
   const addPet = (pet) => {
     setPets((prevState) => [...prevState, pet]);
   };
 
-  const deletePet = async (id) => {
+  const deletePet = async (petId) => {
     try {
-      const { deletedPetId } = await PetsApi.delete(id);
-      setPets((prevState) => prevState.filter((pet) => pet.id !== deletedPetId));
+      const { deletedPetId } = await PetsApi.delete(petId);
+      console.log({deletedPetId});
+      setPets((prevState) => prevState.filter((pet) => pet.id !== petId));
+      
     } catch (e) {
       console.error(e);
     }
@@ -46,7 +48,7 @@ export const PetsList = () => {
     return <span>loading...</span>;
   }
 
-  console.log(pets);
+  //console.log(pets);
 
   return pets.map((pet) => (
     <Pet

@@ -12,7 +12,6 @@ const AddLog = ({ className }) => {
   console.log({ petId });
 
   const log = {
-    name: "",
     description: "",
     status: "",
     pet_id: petId
@@ -25,7 +24,7 @@ const AddLog = ({ className }) => {
     if (res.errors) {
       return console.warn("Bad payload", res.errors);
     }
-    navigate("/", { state: { added: res } });
+    navigate(`/logs/${petId}`);
   };
 
   return (

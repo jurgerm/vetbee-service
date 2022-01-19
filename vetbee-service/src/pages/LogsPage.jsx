@@ -1,5 +1,4 @@
-
-import { Link , useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { Heading, Button, Level } from "react-bulma-components";
 import { LogsList } from "../components/logs/LogsList";
 
@@ -12,8 +11,11 @@ export const LogsPage = (props) => {
   console.log({ location });
   console.log(location.state);
 
-  const { petName } = location.state;
-
+  let petName = '';
+  if (location.state != null) {
+    petName = location.state.petName;
+  }
+  
   return (
     <section>
 
